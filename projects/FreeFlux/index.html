@@ -1,26 +1,358 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Understanding and Exploiting Layer-Specific Roles in RoPE-Based MMDiT for Versatile Image Editing.">
+  <meta name="keywords" content="Multimodal Diffusion Transformer, Rotary Position Embedding, Image Editing">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FreeFlux</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <style>
+    .section {
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 <body>
-    <h1>Welcome to My Project Page</h1>
-    <p>This is a basic GitHub Pages project.</p>
-    <p>You can customize this page to showcase your work!</p>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              </span> FreeFlux: Understanding and Exploiting Layer-Specific Roles in RoPE-Based MMDiT for Versatile Image Editing
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=-wfXmM4AAAAJ&hl=en">Tianyi Wei</a>,
+                <a href="https://zhouyifan.net/">Yifan Zhou</a>,
+                <a href="https://www.dongdongchen.bid/">Dongdong Chen</a>,
+                <a href="https://xingangpan.github.io/">Xingang Pan</a>
+              </span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">S-Lab, Nanyang Technological University&nbsp;&nbsp;&nbsp;&nbsp;Microsoft GenAI</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/wtybest/FreeFlux"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+                <!-- Dataset Link. -->
+                <!-- <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="far fa-images"></i>
+                    </span>
+                    <span>Dataset (coming soon)</span>
+                    </a>
+                </span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column">
+            <img src="./static/images/teaser.png" alt="Teaser figure">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              The integration of Rotary Position Embedding (RoPE) in Multimodal Diffusion Transformer
+               (MMDiT) has significantly enhanced text-to-image generation quality. However, the fundamental 
+               reliance of self-attention layers on positional embedding versus query-key similarity during 
+               generation remains an intriguing question.
+            </p>
+            <p>
+              We present the first mechanistic analysis of RoPE-based MMDiT models (e.g., FLUX), introducing
+               an automated probing strategy that disentangles positional information versus content dependencies
+                by strategically manipulating RoPE during generation. Our analysis reveals distinct dependency
+                 patterns that do not straightforwardly correlate with depth, offering new insights into the
+                  layer-specific roles in RoPE-based MMDiT. Based on these findings, we propose a training-free,
+                   task-specific image editing framework that categorizes editing tasks into three types:
+                    position-dependent editing (e.g., object addition), content similarity-dependent editing
+                     (e.g., non-rigid editing), and region-preserved editing (e.g., background replacement).
+                      For each type, we design tailored key-value injection strategies based on the
+                       characteristics of the editing task. 
+            </p>
+            <p>
+              Extensive qualitative and quantitative evaluations demonstrate that our method outperforms
+               state-of-the-art approaches, particularly in preserving original semantic content and
+                achieving seamless modifications.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Method</h2>
+          <div class="content has-text-justified">
+            <p>
+              Thanks to the explicit injection of positional information into query and key at each layer via RoPE,
+               FLUX demonstrates significantly superior performance over SD3 in both generation quality and high-resolution synthesis,
+                making it a focal point in the text-to-image domain. This also raises an intriguing question: During generation,
+                <em>does the RoPE-based MMDiT rely on positional embedding to retrieve information,
+                  or does it depend on the content similarity between query and key?</em>
+            </p>
+            <p>To address this question, we designed an automated probing strategy to understand the dependency of each self-attention
+               layer on positional information during generation. Later, based on our interesting observations, 
+               we began <em>exploring customized editing strategies tailored to different editing tasks based on their specific characteristics.</em>
+            </p>
+            <p>
+              <strong>(1) Probing Layer-wise Positional Dependency:</strong> During sampling, we manipulate each self-attention
+               layer in FLUX by preserving the RoPE for queries while either removing or shifting the RoPE for keys,
+                thereby obtaining the corresponding generated results. By measuring the similarity between the original
+                 sampled results and the modified outputs, we can infer the functional role of each layer: lower similarity
+                  indicates a stronger reliance on positional relationships, whereas higher similarity suggests a greater
+                   dependence on the content similarity between queries and keys.
+            </p>
+            <div class="column">
+              <img src="./static/images/method.png" alt="Method" />
+            </div>
+            <p>
+              <strong>(2) Customized Strategies for Versatile Editing:</strong> Versatile image editing shares a classic editing mechanism:
+               it generates both the source image and the edited image in parallel. During generation, editing is achieved by injecting keys
+                and/or values from the source image into the edited image. Based on the nature of different editing tasks, we categorize
+                 versatile image editing into three types and design corresponding injection strategies for them:
+                  (1) Position-Dependent Editing, (2) Content Similarity-Dependent Editing, and (3) Region-Preserved Editing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Object Addition Results</h2>
+          <div class="content has-text-justified">
+            <div class="column">
+              <img src="./static/images/obj_addition.png" alt="Object Addition" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Non-Rigid Editing Results</h2>
+          <div class="content has-text-justified">
+            <div class="column">
+              <img src="./static/images/non_rigid.png" alt="Non-Rigid Editing" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Background Replacement Results</h2>
+          <div class="content has-text-justified">
+            <div class="column">
+              <img src="./static/images/bg_editing.png" alt="Background Replacement" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Outpainting Results</h2>
+          <div class="content has-text-justified">
+            <div class="column">
+              <img src="./static/images/outpainting.png" alt="Outpainting" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Object Movement Results</h2>
+          <div class="content has-text-justified">
+            <div class="column">
+              <img src="./static/images/obj_move.png" alt="Object Movement" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br/>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{wei2025freeflux,
+    title     = {FreeFlux: Understanding and Exploiting Layer-Specific Roles in RoPE-Based MMDiT for Versatile Image Editing},
+    author    = {Wei, Tianyi and Zhou, yifan and Chen, Dongdong and Pan, Xingang},
+    journal   = {arXiv preprint arXiv:},
+    year      = {2025},
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is built using the source code provided by the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project. Special thanks to the Nerfies team for creating this excellent project page template.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
