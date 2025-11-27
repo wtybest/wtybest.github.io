@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Enhancing MMDiT-Based Text-to-Image Models for Similar Subject Generation.">
+  <meta name="keywords" content="Text-to-Image Model, Multimodal Diffusion Transformer, Generation Issues">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EnMMDiT</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <style>
+    .section {
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+  <style>
+    .conference-text {
+      color: #d35400;
+      font-weight: bold;
+    }
+  </style>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              Enhancing MMDiT-Based Text-to-Image Models for Similar Subject Generation
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=-wfXmM4AAAAJ&hl=en">Tianyi Wei</a>,
+                <a href="https://www.dongdongchen.bid/">Dongdong Chen</a>,
+                <a href="https://zhouyifan.net/">Yifan Zhou</a>,
+                <a href="https://xingangpan.github.io/">Xingang Pan</a>
+              </span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                S-Lab, Nanyang Technological University&nbsp;&nbsp;&nbsp;&nbsp;Microsoft GenAI
+                <br>
+              </span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2411.18301"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2411.18301"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/wtybest/EnMMDiT"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                    </a>
+                </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://drive.google.com/drive/folders/1BrVbqzguaZbBQpOoTSDT40mpI9SADd-g?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column">
+            <img src="./static/images/teaser.png" alt="Teaser figure">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Representing the cutting-edge technique of text-to-image models, the latest Multimodal Diffusion Transformer (MMDiT)
+               largely mitigates many generation issues existing in previous models. However, we discover that it still suffers from subject
+                neglect or mixing when the input text prompt contains multiple subjects of similar semantics or appearance. 
+            </p>
+            <p>
+              We identify three possible ambiguities within the MMDiT architecture that cause this problem: Inter-block Ambiguity,
+               Text Encoder Ambiguity, and Semantic Ambiguity. To address these issues, we propose to repair the ambiguous
+                latent on-the-fly by test-time optimization at early denoising steps. In detail, we design three loss functions:
+                 Block Alignment Loss, Text Encoder Alignment Loss, and Overlap Loss, each tailored to mitigate these ambiguities.
+                  Despite significant improvements, we observe that semantic ambiguity persists when generating multiple similar subjects,
+                   as the guidance provided by overlap loss is not explicit enough. Therefore, we further propose Overlap Online Detection
+                    and Back-to-Start Sampling Strategy to alleviate the problem. 
+            </p>
+            <p>
+              Experimental results on a newly constructed challenging dataset of similar subjects validate the effectiveness of our approach,
+               showing superior generation quality and much higher success rates over existing methods. The consistent and substantial improvements
+                observed across multiple MMDiT based text-to-image models such as SD3, SD3.5 and FLUX provide strong evidence of the general
+                 applicability of our method.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Method</h2>
+          <div class="content has-text-justified">
+            <p>
+              <strong>(1) Ambiguities Present in MMDiT Generation:</strong> We observe that the subject neglect or mixing problem still troubles
+               the MMDiT model when the input prompt contains two or especially more similar subjects. After a detailed and comprehensive diagnosis,
+                the causes of these issues are categorized into three types of ambiguities (inter-block ambiguity, text encoder ambiguity,
+                 and semantic ambiguity) that exist in the MMDiT model generation process, as illustrated in the figure below.
+            </p>
+            <div class="column">
+              <img src="./static/images/ambiguity-visual.png" alt="Method" />
+            </div>
+            <p>
+              <strong>(2) Mitigating Ambiguities:</strong> We repair the ambiguous latent on the fly using hints
+               from word-based cross-attention maps through test-time optimization at early denoising steps.
+                Accordingly, three tailored losses are proposed, as illustrated in the figure below.
+            </p>
+            <div class="column">
+              <img src="./static/images/loss.png" alt="Method" />
+            </div>
+            <p>
+              <strong>(3) Advanced Strategies for Semantic Ambiguity:</strong> Thanks to this on-the-fly repair technique, the generation issues
+               are greatly mitigated. However, we observe that for the case of three or more similar subjects generated, the problem of semantic
+                ambiguity still exists to some extent despite the overlap loss imposed. We consider the underlying reason to be that overlap loss
+                 is implicit and does not provide more direct and effective guidance. Thankfully, we can diagnose and further
+                    repair the problem at the early stage of denoising with the hint of word-based cross-attention maps. The novel Overlap
+                     Online Detection and Back-to-Start Sampling Strategy is proposed as follows.
+            </p>
+            <div class="column">
+              <img src="./static/images/restart.png" alt="Method" />
+            </div>
+            <p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Results</h2>
+          <div class="content has-text-justified">
+            <div class="column">
+              <img src="./static/images/results.png" alt="Object Addition" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br/>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{wei2025enmmdit,
+    title     = {Enhancing MMDiT-Based Text-to-Image Models for Similar Subject Generation},
+    author    = {Wei, Tianyi and Chen, Dongdong and Zhou, yifan and Pan, Xingang},
+    journal   = {Arxiv},
+    year      = {2025},
+}</code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is built using the source code provided by the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project. Special thanks to the Nerfies team for creating this excellent project page template.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
