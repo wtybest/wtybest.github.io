@@ -60,6 +60,24 @@
         .social-links a { color: var(--light-text); font-size: 20px; transition: color 0.3s ease; }
         .social-links a:hover { color: var(--primary-color); }
 
+        /* 地理位置样式 */
+        .location-badge {
+            margin-top: 15px;      /* 与社交图标保持合适间距 */
+            color: #999;          /* 比社交图标颜色更浅，保持视觉层级 */
+            font-size: 13.5px;
+            font-weight: 400;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;             /* 图标与文字的微小间距 */
+        }
+
+        /* 小图标的大小微调 */
+        .location-badge i {
+            font-size: 12px;      /* 图标稍微小一点更有精致感 */
+            color: #bbb;
+        }
+
         .map-container {
             margin-top: 35px;
             padding-top: 25px;
@@ -269,6 +287,11 @@
                 <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a> -->
             </div>
 
+            <!-- 地理位置模块 -->
+            <div class="location-badge">
+                <i class="fas fa-map-marker-alt"></i> Singapore
+            </div>
+            
             <div class="map-container" style="pointer-events: none;">
                 <h3>Visitor Map</h3>
                 <!-- 你的定制版 ClustrMaps 代码 -->
