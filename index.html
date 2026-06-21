@@ -79,7 +79,7 @@
             color: #bbb;
         }
 
-        .map-container {
+        /* .map-container {
             margin-top: 35px;
             padding-top: 25px;
             border-top: 1px solid var(--border-color);
@@ -93,7 +93,7 @@
             margin-top: 0;
         }
         .map-container a { display: inline-block; width: 100%; max-width: 200px; }
-        .map-container img { width: 100%; border-radius: 8px; }
+        .map-container img { width: 100%; border-radius: 8px; } */
 
         /* ================= 右侧内容区 ================= */
         .content { flex: 1; min-width: 0; }
@@ -113,6 +113,33 @@
         a:hover { text-decoration: underline; }
 
         /* === News === */
+        .news-container {
+            max-height: 245px;         /* 严格计算的 7 条新闻高度 */
+            overflow-y: auto;          /* 超出时自动显示垂直滚动条 */
+            padding-right: 15px;       /* 给右侧滚动条留出呼吸空间 */
+            scrollbar-width: thin;     /* 兼容 Firefox 细滚动条 */
+            scrollbar-color: #e0e0e0 transparent; /* Firefox 滚动条颜色 */
+        }
+
+        /* 现代浏览器（Chrome、Safari、Edge）极简滚动条定制 */
+        .news-container::-webkit-scrollbar {
+            width: 4px;                /* 极细滚动条，避免笨重感 */
+        }
+
+        .news-container::-webkit-scrollbar-track {
+            background: transparent;   /* 轨道完全透明，完美融入背景 */
+        }
+
+        .news-container::-webkit-scrollbar-thumb {
+            background-color: #e2e8f0; /* 默认低调的浅灰色 */
+            border-radius: 10px;       /* 圆角滑块 */
+            transition: background-color 0.3s ease;
+        }
+
+        .news-container::-webkit-scrollbar-thumb:hover {
+            background-color: var(--primary-color); /* 鼠标悬停时变为网页主题蓝，交互感拉满 */
+        }
+
         .news-item {
             display: flex;
             align-items: baseline;
@@ -248,11 +275,11 @@
                 margin-right: auto !important;
             }
             /* 访客地图容器需要显式居中 */
-            .map-container {
+            /* .map-container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-            }
+            } */
             /* .sidebar { flex: none; position: relative; top: 0; border-bottom: 1px solid var(--border-color); padding-bottom: 30px; } */
             .news-item { flex-direction: column; gap: 5px; margin-bottom: 15px;}
             .news-date { flex: none; font-size: 13.5px;}
@@ -277,11 +304,11 @@
         <aside class="sidebar">
             <img src="assets/profile/tianyi_wei.jpg" alt="Profile Photo" class="profile-img">
             <h1>Tianyi Wei</h1>
-            <h2>Research Fellow</h2>
-            <div class="affiliation">MMLab@NTU</div>
+            <h2>Researcher </h2>
+            <div class="affiliation">Microsoft</div>
             
             <div class="social-links">
-                <a href="mailto:tianyi.wei@ntu.edu.sg" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="mailto:besttianyiwei@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
                 <a href="https://scholar.google.com/citations?hl=en&user=-wfXmM4AAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i></a>
                 <a href="https://github.com/wtybest" target="_blank"><i class="fab fa-github"></i></a>
                 <!-- <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -290,14 +317,13 @@
 
             <!-- 地理位置模块 -->
             <div class="location-badge">
-                <i class="fas fa-map-marker-alt"></i> Singapore
+                <i class="fas fa-map-marker-alt"></i> Seattle, USA
             </div>
             
-            <div class="map-container" style="pointer-events: none;">
+            <!-- <div class="map-container" style="pointer-events: none;">
                 <h3>Visitor Map</h3>
-                <!-- 你的定制版 ClustrMaps 代码 -->
                 <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=eaeaea&w=220&t=tt&d=KleWWHnnoZcOjJQlI5o0qDoG0DNmjlzKD2h8mIIy-S8&co=ffffff&cmo=b3d4f0&cmn=0067b8&ct=666666'></script>
-            </div>
+            </div> -->
 
         </aside>
 
@@ -306,35 +332,69 @@
             <!-- About Me -->
             <h3>About Me</h3>
             <p>
-                I am currently a Research Fellow at <a href="https://www.mmlab-ntu.com" target="_blank">MMLab@NTU</a>, working with <a href="https://xingangpan.github.io" target="_blank">Prof. Xingang Pan</a>. I received my Ph.D. in June 2024 from the University of Science and Technology of China (USTC), where I was advised by <a href="https://scholar.google.com/citations?hl=en&user=7620QAMAAAAJ" target="_blank">Prof. Nenghai Yu</a> and <a href="https://scholar.google.com/citations?hl=en&user=eTCfl6cAAAAJ" target="_blank">Prof. Weiming Zhang</a>.
+                I am currently an Applied Scientist at Microsoft, where I work on RL post-training for OpenAI and Microsoft models. Previously, I was a Research Fellow at <a href="https://www.mmlab-ntu.com" target="_blank">MMLab@NTU</a>, working with <a href="https://xingangpan.github.io" target="_blank">Prof. Xingang Pan</a>. I received my Ph.D. in June 2024 from the University of Science and Technology of China (USTC), where I was advised by <a href="https://scholar.google.com/citations?hl=en&user=7620QAMAAAAJ" target="_blank">Prof. Nenghai Yu</a> and <a href="https://scholar.google.com/citations?hl=en&user=eTCfl6cAAAAJ" target="_blank">Prof. Weiming Zhang</a>.
             </p>
             <p>
                 I am deeply grateful to <a href="https://www.dongdongchen.bid" target="_blank">Dr. Dongdong Chen</a> for his continuous guidance and support throughout my academic journey. During my Ph.D., I was also fortunate to receive mentorship from <a href="https://www.cityu.edu.hk/stfprofile/jingliao.htm" target="_blank">Prof. Jing Liao</a> and <a href="http://www.ganghua.org" target="_blank">Dr. Gang Hua</a>.
             </p>
             <p>
-                My research interests broadly lie in <b>Computer Vision</b>, and <b>Generative AI</b>, with a particular focus on image and video synthesis and editing. Feel free to email me for collaboration or academic discussion.
+                My research interests broadly lie in <b>Agentic AI</b>, <b>Computer Vision</b>, and <b>Generative AI</b>, with a particular focus on image and video synthesis and editing. Feel free to email me for collaboration or academic discussion.
             </p>
 
             <!-- News -->
             <h3>News</h3>
-            <div class="news-item">
-                <div class="news-date">Feb 2026</div>
-                <div class="news-text">
-                    EnMMDiT is accepted to <b>TPAMI</b>.
+            <div class="news-container">
+                <div class="news-item">
+                    <div class="news-date">Jun 2026</div>
+                    <div class="news-text">
+                        Two papers are accepted to <b>ECCV 2026</b>.
+                    </div>
+                </div> 
+                <div class="news-item">
+                    <div class="news-date">May 2026</div>
+                    <div class="news-text">
+                        Token Buncher is accepted to <b>CCS 2026</b>.
+                    </div>
                 </div>
-            </div>
-            <div class="news-item">
-                <div class="news-date">Feb 2026</div>
-                <div class="news-text">
-                    LLSA is accepted to <b>CVPR 2026</b>.
+                <div class="news-item">
+                    <div class="news-date">Apr 2026</div>
+                    <div class="news-text">
+                        Two papers are accepted to <b>ICML 2026</b>.
+                    </div>
                 </div>
-            </div>
-            <div class="news-item">
-                <div class="news-date">Jan 2026</div>
-                <div class="news-text">
-                    Unifying Multi-modal Hair Editing is accepted to <b>TPAMI</b>.
+                <div class="news-item">
+                    <div class="news-date">Apr 2026</div>
+                    <div class="news-text">
+                        Began my new journey at <b>Microsoft</b>! Many thanks to <b>MMLab@NTU</b> for all the wonderful memories.
+                    </div>
                 </div>
+                <div class="news-item">
+                    <div class="news-date">Apr 2026</div>
+                    <div class="news-text">
+                        One paper is accepted to <b>ACL 2026</b>.
+                    </div>
+                </div> 
+                <div class="news-item">
+                    <div class="news-date">Feb 2026</div>
+                    <div class="news-text">
+                        EnMMDiT is accepted to <b>TPAMI</b>.
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">Feb 2026</div>
+                    <div class="news-text">
+                        LLSA is accepted to <b>CVPR 2026</b>.
+                    </div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">Jan 2026</div>
+                    <div class="news-text">
+                        Unifying Multi-modal Hair Editing is accepted to <b>TPAMI</b>.
+                    </div>
+                </div>                
             </div>
+
+
             <!-- <div class="news-item">
                 <div class="news-date">Oct 2025</div>
                 <div class="news-text">
@@ -353,13 +413,24 @@
             <h3>Experience</h3>
 
             <div class="experience-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft Logo" class="exp-logo">
+                <div class="exp-content">
+                    <div>
+                        <div class="experience-role">Applied Scientist</div>
+                        <div class="experience-org">Microsoft</div>
+                    </div>
+                    <div class="experience-time">Apr 2026 - Present</div>
+                </div>
+            </div>
+
+            <div class="experience-item">
                 <img src="assets/logos/mmlab_logo.png" alt="University Logo" class="exp-logo">
                 <div class="exp-content">
                     <div>
                         <div class="experience-role">Research Fellow</div>
                         <div class="experience-org">Nanyang Technological University</div>
                     </div>
-                    <div class="experience-time">July 2024 - Present</div>
+                    <div class="experience-time">July 2024 - Apr 2026</div>
                 </div>
             </div>
 
@@ -376,7 +447,77 @@
 
             <!-- Selected Publications -->
             <h3>Selected Publications</h3>
-            
+
+            <div class="pub-item">
+                <div class="pub-teaser">
+                    <img src="assets/teasers/semanticvggt-eccv-2026.jpg" alt="Paper Teaser">
+                </div>
+                <div class="pub-info">
+                    <div class="pub-title">Towards Geometry-Grounded Dense Semantic Matching with VGGT Priors</div>
+                    <div class="pub-authors">
+                        Songlin Yang, <b>Tianyi Wei</b>, Yushi Lan, Zeqi Xiao, Anyi Rao, Xingang Pan
+                    </div>
+                    <div class="pub-venue">European Conference on Computer Vision (ECCV), 2026</div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2509.21263" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+                        <a href="https://github.com/Songlin1998/VGGT-SM" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-teaser">
+                    <img src="assets/teasers/mvgrpo-eccv-2026.jpg" alt="Paper Teaser">
+                </div>
+                <div class="pub-info">
+                    <div class="pub-title">From Sparse to Dense: Multi-View GRPO for Flow Models via Augmented Condition Space</div>
+                    <div class="pub-authors">
+                        Jiazi Bu, Pengyang Ling, Yujie Zhou, Yibin Wang, Yuhang Zang, <b>Tianyi Wei</b>, Xiaohang Zhan, Jiaqi Wang, Tong Wu, Xingang Pan, Dahua Lin
+                    </div>
+                    <div class="pub-venue">European Conference on Computer Vision (ECCV), 2026</div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2603.12648" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+                        <a href="https://bujiazi.github.io/mvgrpo.github.io/" target="_blank"><i class="fas fa-globe"></i> Project Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-teaser">
+                    <img src="assets/teasers/tokenbuncher-ccs-2026.jpg" alt="Paper Teaser">
+                </div>
+                <div class="pub-info">
+                    <div class="pub-title">Token Buncher: Shielding LLMs from Harmful Reinforcement Learning Fine-Tuning</div>
+                    <div class="pub-authors">
+                        Weitao Feng, Lixu Wang, Peizhuo Lv, <b>Tianyi Wei</b>, Jie Zhang, Chongyang Gao, Sinong Zhan, Wei Dong
+                    </div>
+                    <div class="pub-venue">The ACM Conference on Computer and Communications Security (CCS), 2026</div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2508.20697" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+                        <a href="https://github.com/Georgefwt/Token-Buncher" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        <a href="https://tokenbuncher.github.io" target="_blank"><i class="fas fa-globe"></i> Project Page</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-teaser">
+                    <img src="assets/teasers/bokehdepth-icml-2026.jpg" alt="Paper Teaser">
+                </div>
+                <div class="pub-info">
+                    <div class="pub-title">Boosting Monocular Metric Depth Estimation via Bokeh Rendering</div>
+                    <div class="pub-authors">
+                        Hangwei Zhang, Armando Fortes, <b>Tianyi Wei</b>, Xingang Pan
+                    </div>
+                    <div class="pub-venue">Proceedings of the 41st International Conference on Machine Learning (ICML), 2026</div>
+                    <div class="pub-links">
+                        <a href="https://arxiv.org/abs/2512.12425" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+                        <a href="https://github.com/fogradio/BokehDepth" target="_blank"><i class="fab fa-github"></i> Code</a>
+                        <a href="https://fogradio.github.io/BokehDepth_Project/" target="_blank"><i class="fas fa-globe"></i> Project Page</a>
+                    </div>
+                </div>
+            </div>
+
             <div class="pub-item">
                 <div class="pub-teaser">
                     <img src="assets/teasers/EnMMDiT-tpami-2026.png" alt="Paper Teaser">
@@ -727,7 +868,7 @@
                     CVPR (since 2022), ICCV (since 2023), ECCV (since 2022), WACV (since 2024)<br>
                     NeurIPS (since 2023), ICLR (since 2024), ICML (since 2024)<br>
                     SIGGRAPH (since 2022), SIGGRAPH Asia (since 2024)<br>
-                    ACL (since 2026)
+                    ACL (since 2026), EMNLP (since 2026)<br>
                 </div>
             </div>
             <div class="service-item">
@@ -745,7 +886,7 @@
             <br><br>
             <!-- 页脚 -->
             <div style="text-align: center; color: #888; font-size: 13px; border-top: 1px solid #eaeaea; padding-top: 20px; margin-top: 60px;">
-                Last updated: March 2026<br>
+                Last updated: Jun 2026<br>
                 Special thanks to my wife Yi Yin
             </div>
 
