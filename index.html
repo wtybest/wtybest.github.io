@@ -79,7 +79,7 @@
             color: #bbb;
         }
 
-        /* .map-container {
+        .map-container {
             margin-top: 35px;
             padding-top: 25px;
             border-top: 1px solid var(--border-color);
@@ -93,7 +93,7 @@
             margin-top: 0;
         }
         .map-container a { display: inline-block; width: 100%; max-width: 200px; }
-        .map-container img { width: 100%; border-radius: 8px; } */
+        .map-container img { width: 100%; border-radius: 8px; }
 
         /* ================= 右侧内容区 ================= */
         .content { flex: 1; min-width: 0; }
@@ -275,11 +275,11 @@
                 margin-right: auto !important;
             }
             /* 访客地图容器需要显式居中 */
-            /* .map-container {
+            .map-container {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-            } */
+            }
             /* .sidebar { flex: none; position: relative; top: 0; border-bottom: 1px solid var(--border-color); padding-bottom: 30px; } */
             .news-item { flex-direction: column; gap: 5px; margin-bottom: 15px;}
             .news-date { flex: none; font-size: 13.5px;}
@@ -320,6 +320,11 @@
                 <i class="fas fa-map-marker-alt"></i> Seattle, USA
             </div>
             
+            <div class="map-container" style="pointer-events: none;">
+                <h3>Visitor Map</h3>
+                <script type='text/javascript' id='mapmyvisitors' src='https://mapmyvisitors.com/map.js?cl=eaeaea&w=220&t=tt&d=XGgNT0o7YLcJ3iHddsGGkT29zRfRctNh80ZvYuDbimw&co=ffffff&cmo=b3d4f0&cmn=0067b8&ct=666666'></script>
+            </div>
+
             <!-- <div class="map-container" style="pointer-events: none;">
                 <h3>Visitor Map</h3>
                 <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=eaeaea&w=220&t=tt&d=KleWWHnnoZcOjJQlI5o0qDoG0DNmjlzKD2h8mIIy-S8&co=ffffff&cmo=b3d4f0&cmn=0067b8&ct=666666'></script>
